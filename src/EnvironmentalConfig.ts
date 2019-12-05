@@ -17,6 +17,7 @@ export enum ConfigKey {
   MongoDbBatchSize = "MONGO_DB_BATCH_SIZE",
   DataDirectory = "DATA_DIRECTORY",
   DataYear = "DATA_YEAR",
+  MaxParallelDownlaods = "MAX_PARALLEL_DOWNLOADS",
 }
 
 const configDefaultMap: Map<ConfigKey, string | undefined> = new Map([
@@ -25,6 +26,7 @@ const configDefaultMap: Map<ConfigKey, string | undefined> = new Map([
   [ConfigKey.MongoDbBatchSize, "20"],
   [ConfigKey.DataDirectory, "./data"],
   [ConfigKey.DataYear, "2015"],
+  [ConfigKey.MaxParallelDownlaods, "4"],
 ]);
 
 if (process.env.NODE_ENV === Environment.Test) {

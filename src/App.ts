@@ -1,9 +1,9 @@
+import { mapRawAccident } from "./AccidentMapper";
 import { connectSingletonDatabase } from "./Database";
-import { config } from "./EnvironmentalConfig";
+import { config, ConfigKey } from "./EnvironmentalConfig";
 import { getFileObjects } from "./FileHelpers";
 import { logger } from "./Logger";
-
-const MAX_PARALLEL_FILES = 4;
+import { Accident, IAccident } from "./models/Accident";
 
 const main = async (): Promise<number> => {
   connectSingletonDatabase();
@@ -49,7 +49,11 @@ const main = async (): Promise<number> => {
       .then(async (relatedEntities) => {
         relatedEntities.forEach((element) => {
           const accident = accidentMap.get(element.consecutive_number);
-          accident[relatedType] = element;
+          if (accident[relatedType]) {
+            accident[relatedType].push(element);
+          } else {
+            accident[relatedType] = [element];
+          }
         });
 
         await loadRelatedEntities();
@@ -57,8 +61,9 @@ const main = async (): Promise<number> => {
       .catch((error: any) => { throw error; });
   };
 
+  const maxDownloadPromises = config.getNumber(ConfigKey.MaxParallelDownlaods);
   const initialPromises = [];
-  while (initialPromises.length < MAX_PARALLEL_FILES) {
+  while (initialPromises.length < maxDownloadPromises) {
     initialPromises.push(loadRelatedEntities());
   }
 
@@ -67,10 +72,34 @@ const main = async (): Promise<number> => {
 
   logger.info("Save entities to Database");
 
+  const maxBatchSize = config.getNumber(ConfigKey.MaxParallelDownlaods);
+  const iterator = accidentMap.entries();
+  let nextAccident = iterator.next();
+
   const saveBatch = () => {
-    const batch = [];
-    // TODO
+    const batch: IAccident[] = [];
+    while (nextAccident && batch.length < maxBatchSize) {
+      const [id, accident] = nextAccident.value;
+      batch.push(mapRawAccident(accident));
+      accidentMap.delete(id);
+      nextAccident = iterator.next();
+    }
+
+    Accident.create(batch, (error) => {
+      if (error) {
+        let message = error.message;
+        if (error.errors) {
+          message = error.errors;
+        }
+
+        logger.error(message);
+      }
+    });
   };
+
+  while (nextAccident) {
+    saveBatch();
+  }
 
   return 0;
 };
