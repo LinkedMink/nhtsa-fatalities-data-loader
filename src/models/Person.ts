@@ -10,67 +10,67 @@ const schemaDefinition = {
   monthOfCrash: { type: SchemaTypes.Number },
   hourOfCrash: { type: SchemaTypes.Number },
   minuteOfCrash: { type: SchemaTypes.Number },
-  landUse: { type: SchemaTypes.Number },
-  landUseName: { type: SchemaTypes.Number },
-  functionalSystem: { type: SchemaTypes.Number },
-  functionalSystemName: { type: SchemaTypes.Number },
+  landUse: { type: SchemaTypes.String },
+  landUseName: { type: SchemaTypes.String },
+  functionalSystem: { type: SchemaTypes.String },
+  functionalSystemName: { type: SchemaTypes.String },
   firstHarmfulEvent: { type: SchemaTypes.Number },
-  firstHarmfulEventName: { type: SchemaTypes.Number },
+  firstHarmfulEventName: { type: SchemaTypes.String },
   mannerOfCollision: { type: SchemaTypes.Number },
-  mannerOfCollisionName: { type: SchemaTypes.Number },
-  schoolBusRelated: { type: SchemaTypes.Number },
+  mannerOfCollisionName: { type: SchemaTypes.String },
+  schoolBusRelated: { type: SchemaTypes.String },
   vehicleMake: { type: SchemaTypes.Number },
-  vehicleMakeName: { type: SchemaTypes.Number },
+  vehicleMakeName: { type: SchemaTypes.String },
   makeModelCombined: { type: SchemaTypes.Number },
   bodyType: { type: SchemaTypes.Number },
-  bodyTypeName: { type: SchemaTypes.Number },
-  vehicleTrailing: { type: SchemaTypes.Number },
+  bodyTypeName: { type: SchemaTypes.String },
+  vehicleTrailing: { type: SchemaTypes.String },
   specialUse: { type: SchemaTypes.Number },
-  specialUseName: { type: SchemaTypes.Number },
-  emergencyMotorVehicleUse: { type: SchemaTypes.Number },
-  rollover: { type: SchemaTypes.Number },
+  specialUseName: { type: SchemaTypes.String },
+  emergencyMotorVehicleUse: { type: SchemaTypes.String },
+  rollover: { type: SchemaTypes.String },
   initialContactPoint: { type: SchemaTypes.Number },
-  initialContactPointName: { type: SchemaTypes.Number },
-  fireOccurrence: { type: SchemaTypes.Number },
+  initialContactPointName: { type: SchemaTypes.String },
+  fireOccurrence: { type: SchemaTypes.String },
   age: { type: SchemaTypes.Number },
-  sex: { type: SchemaTypes.Number },
+  sex: { type: SchemaTypes.String },
   personType: { type: SchemaTypes.Number },
-  personTypeName: { type: SchemaTypes.Number },
+  personTypeName: { type: SchemaTypes.String },
   injurySeverity: { type: SchemaTypes.Number },
-  injurySeverityName: { type: SchemaTypes.Number },
+  injurySeverityName: { type: SchemaTypes.String },
   seatingPosition: { type: SchemaTypes.Number },
-  seatingPositionName: { type: SchemaTypes.Number },
+  seatingPositionName: { type: SchemaTypes.String },
   restraintSystemHelmetUse: { type: SchemaTypes.Number },
-  restraintSystemHelmetUseName: { type: SchemaTypes.Number },
-  indicationOfMisuseOfRestraintSystemHelmet: { type: SchemaTypes.Number },
+  restraintSystemHelmetUseName: { type: SchemaTypes.String },
+  indicationOfMisuseOfRestraintSystemHelmet: { type: SchemaTypes.String },
   airBagDeployed: { type: SchemaTypes.Number },
-  airBagDeployedName: { type: SchemaTypes.Number },
+  airBagDeployedName: { type: SchemaTypes.String },
   ejection: { type: SchemaTypes.Number },
-  ejectionName: { type: SchemaTypes.Number },
+  ejectionName: { type: SchemaTypes.String },
   ejectionPath: { type: SchemaTypes.Number },
-  ejectionPathName: { type: SchemaTypes.Number },
-  extrication: { type: SchemaTypes.Number },
-  policeReportedAlcoholInvolvement: { type: SchemaTypes.Number },
-  methodOfAlcoholDeterminationByPolice: { type: SchemaTypes.Number },
-  alcoholTestStatus1: { type: SchemaTypes.Number },
-  alcoholTestStatus2: { type: SchemaTypes.Number },
-  alcoholTestStatus3: { type: SchemaTypes.Number },
-  alcoholTestStatus3Name: { type: SchemaTypes.Number },
-  policeReportedDrugInvolvement: { type: SchemaTypes.Number },
-  methodOfDrugDeterminationByPolice: { type: SchemaTypes.Number },
-  drugTestStatus: { type: SchemaTypes.Number },
-  drugTestType1: { type: SchemaTypes.Number },
-  drugTestType2: { type: SchemaTypes.Number },
-  drugTestType3: { type: SchemaTypes.Number },
+  ejectionPathName: { type: SchemaTypes.String },
+  extrication: { type: SchemaTypes.String },
+  policeReportedAlcoholInvolvement: { type: SchemaTypes.String },
+  methodOfAlcoholDeterminationByPolice: { type: SchemaTypes.String },
+  alcoholTestStatus1: { type: SchemaTypes.String },
+  alcoholTestStatus2: { type: SchemaTypes.String },
+  alcoholTestStatus3: { type: SchemaTypes.String },
+  alcoholTestStatus3Name: { type: SchemaTypes.String },
+  policeReportedDrugInvolvement: { type: SchemaTypes.String },
+  methodOfDrugDeterminationByPolice: { type: SchemaTypes.String },
+  drugTestStatus: { type: SchemaTypes.String },
+  drugTestType1: { type: SchemaTypes.String },
+  drugTestType2: { type: SchemaTypes.String },
+  drugTestType3: { type: SchemaTypes.String },
   drugTestType4: { type: SchemaTypes.Number },
-  drugTestType4Name: { type: SchemaTypes.Number },
+  drugTestType4Name: { type: SchemaTypes.String },
   drugTestType5: { type: SchemaTypes.Number },
-  drugTestType5Name: { type: SchemaTypes.Number },
+  drugTestType5Name: { type: SchemaTypes.String },
   drugTestType6: { type: SchemaTypes.Number },
-  drugTestType6Name: { type: SchemaTypes.Number },
+  drugTestType6Name: { type: SchemaTypes.String },
   transportedToFirstTreatmentFacility: { type: SchemaTypes.Number },
-  transportedToFirstTreatmentFacilityName: { type: SchemaTypes.Number },
-  diedAtSceneEnRoute: { type: SchemaTypes.Number },
+  transportedToFirstTreatmentFacilityName: { type: SchemaTypes.String },
+  diedAtSceneEnRoute: { type: SchemaTypes.String },
   dayOfDeath: { type: SchemaTypes.Number },
   monthOfDeath: { type: SchemaTypes.Number },
   yearOfDeath: { type: SchemaTypes.Number },
@@ -82,106 +82,106 @@ const schemaDefinition = {
   relatedFactorsPersonLevel1: { type: SchemaTypes.Number },
   relatedFactorsPersonLevel2: { type: SchemaTypes.Number },
   relatedFactorsPersonLevel3: { type: SchemaTypes.Number },
-  fatalInjuryAtWork: { type: SchemaTypes.Number },
+  fatalInjuryAtWork: { type: SchemaTypes.String },
   hispanicOrigin: { type: SchemaTypes.Number },
-  hispanicOriginName: { type: SchemaTypes.Number },
+  hispanicOriginName: { type: SchemaTypes.String },
   race: { type: SchemaTypes.Number },
-  raceName: { type: SchemaTypes.Number },
+  raceName: { type: SchemaTypes.String },
   nonMotoristLocationAtTimeOfCrash: { type: SchemaTypes.Number },
-  nonMotoristLocationAtTimeOfCrashName: { type: SchemaTypes.Number },
-  timestampOfCrash: { type: SchemaTypes.Number },
+  nonMotoristLocationAtTimeOfCrashName: { type: SchemaTypes.String },
+  timestampOfCrash: { type: SchemaTypes.Date },
 };
 
 export const personSchema = new Schema(schemaDefinition);
 
 export interface IPerson extends Types.Subdocument {
-  numberOfMotorVehiclesInTransportMvit: number;
-  vehicleNumber: number;
-  personNumber: number;
-  numberOfMotorVehicleStrikingNonMotorist: number;
-  county: number;
-  dayOfCrash: number;
-  monthOfCrash: number;
-  hourOfCrash: number;
-  minuteOfCrash: number;
-  landUse: number;
-  landUseName: number;
-  functionalSystem: number;
-  functionalSystemName: number;
-  firstHarmfulEvent: number;
-  firstHarmfulEventName: number;
-  mannerOfCollision: number;
-  mannerOfCollisionName: number;
-  schoolBusRelated: number;
-  vehicleMake: number;
-  vehicleMakeName: number;
-  makeModelCombined: number;
-  bodyType: number;
-  bodyTypeName: number;
-  vehicleTrailing: number;
-  specialUse: number;
-  specialUseName: number;
-  emergencyMotorVehicleUse: number;
-  rollover: number;
-  initialContactPoint: number;
-  initialContactPointName: number;
-  fireOccurrence: number;
-  age: number;
-  sex: number;
-  personType: number;
-  personTypeName: number;
-  injurySeverity: number;
-  injurySeverityName: number;
-  seatingPosition: number;
-  seatingPositionName: number;
-  restraintSystemHelmetUse: number;
-  restraintSystemHelmetUseName: number;
-  indicationOfMisuseOfRestraintSystemHelmet: number;
-  airBagDeployed: number;
-  airBagDeployedName: number;
-  ejection: number;
-  ejectionName: number;
-  ejectionPath: number;
-  ejectionPathName: number;
-  extrication: number;
-  policeReportedAlcoholInvolvement: number;
-  methodOfAlcoholDeterminationByPolice: number;
-  alcoholTestStatus1: number;
-  alcoholTestStatus2: number;
-  alcoholTestStatus3: number;
-  alcoholTestStatus3Name: number;
-  policeReportedDrugInvolvement: number;
-  methodOfDrugDeterminationByPolice: number;
-  drugTestStatus: number;
-  drugTestType1: number;
-  drugTestType2: number;
-  drugTestType3: number;
-  drugTestType4: number;
-  drugTestType4Name: number;
-  drugTestType5: number;
-  drugTestType5Name: number;
-  drugTestType6: number;
-  drugTestType6Name: number;
-  transportedToFirstTreatmentFacility: number;
-  transportedToFirstTreatmentFacilityName: number;
-  diedAtSceneEnRoute: number;
-  dayOfDeath: number;
-  monthOfDeath: number;
-  yearOfDeath: number;
-  hourOfDeath: number;
-  minuteOfDeath: number;
-  deathTime: number;
-  lagHours: number;
-  lagMinutes: number;
-  relatedFactorsPersonLevel1: number;
-  relatedFactorsPersonLevel2: number;
-  relatedFactorsPersonLevel3: number;
-  fatalInjuryAtWork: number;
-  hispanicOrigin: number;
-  hispanicOriginName: number;
-  race: number;
-  raceName: number;
-  nonMotoristLocationAtTimeOfCrash: number;
-  nonMotoristLocationAtTimeOfCrashName: number;
-  timestampOfCrash: Date;
+  numberOfMotorVehiclesInTransportMvit?: number;
+  vehicleNumber?: number;
+  personNumber?: number;
+  numberOfMotorVehicleStrikingNonMotorist?: number;
+  county?: number;
+  dayOfCrash?: number;
+  monthOfCrash?: number;
+  hourOfCrash?: number;
+  minuteOfCrash?: number;
+  landUse?: string;
+  landUseName?: string;
+  functionalSystem?: string;
+  functionalSystemName?: string;
+  firstHarmfulEvent?: number;
+  firstHarmfulEventName?: string;
+  mannerOfCollision?: number;
+  mannerOfCollisionName?: string;
+  schoolBusRelated?: string;
+  vehicleMake?: number;
+  vehicleMakeName?: string;
+  makeModelCombined?: number;
+  bodyType?: number;
+  bodyTypeName?: string;
+  vehicleTrailing?: string;
+  specialUse?: number;
+  specialUseName?: string;
+  emergencyMotorVehicleUse?: string;
+  rollover?: string;
+  initialContactPoint?: number;
+  initialContactPointName?: string;
+  fireOccurrence?: string;
+  age?: number;
+  sex?: string;
+  personType?: number;
+  personTypeName?: string;
+  injurySeverity?: number;
+  injurySeverityName?: string;
+  seatingPosition?: number;
+  seatingPositionName?: string;
+  restraintSystemHelmetUse?: number;
+  restraintSystemHelmetUseName?: string;
+  indicationOfMisuseOfRestraintSystemHelmet?: string;
+  airBagDeployed?: number;
+  airBagDeployedName?: string;
+  ejection?: number;
+  ejectionName?: string;
+  ejectionPath?: number;
+  ejectionPathName?: string;
+  extrication?: string;
+  policeReportedAlcoholInvolvement?: string;
+  methodOfAlcoholDeterminationByPolice?: string;
+  alcoholTestStatus1?: string;
+  alcoholTestStatus2?: string;
+  alcoholTestStatus3?: string;
+  alcoholTestStatus3Name?: string;
+  policeReportedDrugInvolvement?: string;
+  methodOfDrugDeterminationByPolice?: string;
+  drugTestStatus?: string;
+  drugTestType1?: string;
+  drugTestType2?: string;
+  drugTestType3?: string;
+  drugTestType4?: number;
+  drugTestType4Name?: string;
+  drugTestType5?: number;
+  drugTestType5Name?: string;
+  drugTestType6?: number;
+  drugTestType6Name?: string;
+  transportedToFirstTreatmentFacility?: number;
+  transportedToFirstTreatmentFacilityName?: string;
+  diedAtSceneEnRoute?: string;
+  dayOfDeath?: number;
+  monthOfDeath?: number;
+  yearOfDeath?: number;
+  hourOfDeath?: number;
+  minuteOfDeath?: number;
+  deathTime?: number;
+  lagHours?: number;
+  lagMinutes?: number;
+  relatedFactorsPersonLevel1?: number;
+  relatedFactorsPersonLevel2?: number;
+  relatedFactorsPersonLevel3?: number;
+  fatalInjuryAtWork?: string;
+  hispanicOrigin?: number;
+  hispanicOriginName?: string;
+  race?: number;
+  raceName?: string;
+  nonMotoristLocationAtTimeOfCrash?: number;
+  nonMotoristLocationAtTimeOfCrashName?: string;
+  timestampOfCrash?: Date;
 }

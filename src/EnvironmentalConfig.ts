@@ -17,16 +17,16 @@ export enum ConfigKey {
   MongoDbBatchSize = "MONGO_DB_BATCH_SIZE",
   DataDirectory = "DATA_DIRECTORY",
   DataYear = "DATA_YEAR",
-  MaxParallelDownlaods = "MAX_PARALLEL_DOWNLOADS",
+  MaxParallelFiles = "MAX_PARALLEL_FILES",
 }
 
 const configDefaultMap: Map<ConfigKey, string | undefined> = new Map([
   [ConfigKey.LogFile, "combined.log"],
   [ConfigKey.LogLevel, "info"],
-  [ConfigKey.MongoDbBatchSize, "20"],
+  [ConfigKey.MongoDbBatchSize, "25"],
   [ConfigKey.DataDirectory, "./data"],
   [ConfigKey.DataYear, "2015"],
-  [ConfigKey.MaxParallelDownlaods, "4"],
+  [ConfigKey.MaxParallelFiles, "2"],
 ]);
 
 if (process.env.NODE_ENV === Environment.Test) {

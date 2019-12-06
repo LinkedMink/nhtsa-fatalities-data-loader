@@ -17,15 +17,15 @@ const schemaDefinition = {
 export const vehicleEventSchema = new Schema(schemaDefinition);
 
 export interface IVehicleEvent extends Types.Subdocument {
-  eventNumber: number;
-  vehicleNumber: number;
-  vehicleEventNumber: number;
-  vehicleNumberThisVehicle: number;
-  areaOfImpactThisVehicle: number;
-  areaOfImpactThisVehicleName: string;
-  sequenceOfEvents: number;
-  sequenceOfEventsName: string;
-  vehicleNumberOtherVehicle: number;
-  areaOfImpactOtherVehicle: number;
-  areaOfImpactOtherVehicleName: string;
+  eventNumber?: number;
+  vehicleNumber?: number;
+  vehicleEventNumber?: number;
+  vehicleNumberThisVehicle?: number;
+  areaOfImpactThisVehicle?: number;
+  areaOfImpactThisVehicleName?: string;
+  sequenceOfEvents?: number;
+  sequenceOfEventsName?: string;
+  vehicleNumberOtherVehicle?: number;
+  areaOfImpactOtherVehicle?: number;
+  areaOfImpactOtherVehicleName?: string;
 }

@@ -9,129 +9,105 @@ const schemaDefinition = {
   hourOfCrash: { type: SchemaTypes.Number },
   minuteOfCrash: { type: SchemaTypes.Number },
   firstHarmfulEvent: { type: SchemaTypes.Number },
-  firstHarmfulEventName: { type: SchemaTypes.Number },
+  firstHarmfulEventName: { type: SchemaTypes.String },
   mannerOfCollision: { type: SchemaTypes.Number },
-  mannerOfCollisionName: { type: SchemaTypes.Number },
-  unitType: { type: SchemaTypes.Number },
-  hitAndRun: { type: SchemaTypes.Number },
+  mannerOfCollisionName: { type: SchemaTypes.String },
+  unitType: { type: SchemaTypes.String },
+  hitAndRun: { type: SchemaTypes.String },
   registrationState: { type: SchemaTypes.Number },
-  registrationStateName: { type: SchemaTypes.Number },
+  registrationStateName: { type: SchemaTypes.String },
   registeredVehicleOwner: { type: SchemaTypes.Number },
-  registeredVehicleOwnerName: { type: SchemaTypes.Number },
+  registeredVehicleOwnerName: { type: SchemaTypes.String },
   vehicleMake: { type: SchemaTypes.Number },
-  vehicleMakeName: { type: SchemaTypes.Number },
+  vehicleMakeName: { type: SchemaTypes.String },
   vehicleModel: { type: SchemaTypes.Number },
   makeModelCombined: { type: SchemaTypes.Number },
   bodyType: { type: SchemaTypes.Number },
-  bodyTypeName: { type: SchemaTypes.Number },
+  bodyTypeName: { type: SchemaTypes.String },
   vehicleModelYear: { type: SchemaTypes.Number },
-  vehicleIdentificationNumberVin: { type: SchemaTypes.Number },
-  vinCharacter1: { type: SchemaTypes.Number },
-  vinCharacter2: { type: SchemaTypes.Number },
-  vinCharacter3: { type: SchemaTypes.Number },
-  vinCharacter4: { type: SchemaTypes.Number },
-  vinCharacter5: { type: SchemaTypes.Number },
-  vinCharacter6: { type: SchemaTypes.Number },
-  vinCharacter7: { type: SchemaTypes.Number },
-  vinCharacter8: { type: SchemaTypes.Number },
-  vinCharacter9: { type: SchemaTypes.Number },
-  vinCharacter10: { type: SchemaTypes.Number },
-  vinCharacter11: { type: SchemaTypes.Number },
-  vinCharacter12: { type: SchemaTypes.Number },
-  vehicleTrailing: { type: SchemaTypes.Number },
+  vehicleIdentificationNumberVin: { type: SchemaTypes.String },
+  vehicleTrailing: { type: SchemaTypes.String },
   mcidIssuingAuthority: { type: SchemaTypes.Number },
-  mcidIssuingAuthorityName: { type: SchemaTypes.Number },
-  mcidIdentificationNumber: { type: SchemaTypes.Number },
-  motorCarrierIdentificationNumber: { type: SchemaTypes.Number },
+  mcidIssuingAuthorityName: { type: SchemaTypes.String },
+  mcidIdentificationNumber: { type: SchemaTypes.String },
+  motorCarrierIdentificationNumber: { type: SchemaTypes.String },
   grossVehicleWeightRating: { type: SchemaTypes.Number },
   vehicleConfiguration: { type: SchemaTypes.Number },
   cargoBodyType: { type: SchemaTypes.Number },
-  hazardousMaterialInvolvement: { type: SchemaTypes.Number },
-  hazardousMaterialPlacard: { type: SchemaTypes.Number },
+  hazardousMaterialInvolvement: { type: SchemaTypes.String },
+  hazardousMaterialPlacard: { type: SchemaTypes.String },
   hazardousMaterialIdentificationNumber: { type: SchemaTypes.Number },
   hazardousMaterialClassNumber: { type: SchemaTypes.Number },
-  releaseOfHazardousMaterialFromTheCargoCompartment: { type: SchemaTypes.Number },
-  busUse: { type: SchemaTypes.Number },
+  releaseOfHazardousMaterialFromTheCargoCompartment: { type: SchemaTypes.String },
+  busUse: { type: SchemaTypes.String },
   specialUse: { type: SchemaTypes.Number },
-  specialUseName: { type: SchemaTypes.Number },
-  emergencyMotorVehicleUse: { type: SchemaTypes.Number },
+  specialUseName: { type: SchemaTypes.String },
+  emergencyMotorVehicleUse: { type: SchemaTypes.String },
   underrideOverride: { type: SchemaTypes.Number },
-  underrideOverrideName: { type: SchemaTypes.Number },
+  underrideOverrideName: { type: SchemaTypes.String },
   initialContactPoint: { type: SchemaTypes.Number },
-  extentOfDamage: { type: SchemaTypes.Number },
-  vehicleRemoval: { type: SchemaTypes.Number },
+  extentOfDamage: { type: SchemaTypes.String },
+  vehicleRemoval: { type: SchemaTypes.String },
   mostHarmfulEvent: { type: SchemaTypes.Number },
   relatedFactorsVehicleLevel1: { type: SchemaTypes.Number },
   relatedFactorsVehicleLevel2: { type: SchemaTypes.Number },
-  fireOccurrence: { type: SchemaTypes.Number },
+  fireOccurrence: { type: SchemaTypes.String },
   fatalitiesInVehicle: { type: SchemaTypes.Number },
 };
 
 export const parkWorkVehicleSchema = new Schema(schemaDefinition);
 
 export interface IParkWorkVehicle extends Types.Subdocument {
-  vehicleNumber: number;
-  numberOfMotorVehiclesInTransportMvit: number;
-  numberOfOccupants: number;
-  dayOfCrash: number;
-  monthOfCrash: number;
-  hourOfCrash: number;
-  minuteOfCrash: number;
-  firstHarmfulEvent: number;
-  firstHarmfulEventName: number;
-  mannerOfCollision: number;
-  mannerOfCollisionName: number;
-  unitType: number;
-  hitAndRun: number;
-  registrationState: number;
-  registrationStateName: number;
-  registeredVehicleOwner: number;
-  registeredVehicleOwnerName: number;
-  vehicleMake: number;
-  vehicleMakeName: number;
-  vehicleModel: number;
-  makeModelCombined: number;
-  bodyType: number;
-  bodyTypeName: number;
-  vehicleModelYear: number;
-  vehicleIdentificationNumberVin: number;
-  vinCharacter1: number;
-  vinCharacter2: number;
-  vinCharacter3: number;
-  vinCharacter4: number;
-  vinCharacter5: number;
-  vinCharacter6: number;
-  vinCharacter7: number;
-  vinCharacter8: number;
-  vinCharacter9: number;
-  vinCharacter10: number;
-  vinCharacter11: number;
-  vinCharacter12: number;
-  vehicleTrailing: number;
-  mcidIssuingAuthority: number;
-  mcidIssuingAuthorityName: number;
-  mcidIdentificationNumber: number;
-  motorCarrierIdentificationNumber: number;
-  grossVehicleWeightRating: number;
-  vehicleConfiguration: number;
-  cargoBodyType: number;
-  hazardousMaterialInvolvement: number;
-  hazardousMaterialPlacard: number;
-  hazardousMaterialIdentificationNumber: number;
-  hazardousMaterialClassNumber: number;
-  releaseOfHazardousMaterialFromTheCargoCompartment: number;
-  busUse: number;
-  specialUse: number;
-  specialUseName: number;
-  emergencyMotorVehicleUse: number;
-  underrideOverride: number;
-  underrideOverrideName: number;
-  initialContactPoint: number;
-  extentOfDamage: number;
-  vehicleRemoval: number;
-  mostHarmfulEvent: number;
-  relatedFactorsVehicleLevel1: number;
-  relatedFactorsVehicleLevel2: number;
-  fireOccurrence: number;
-  fatalitiesInVehicle: number;
+  vehicleNumber?: number;
+  numberOfMotorVehiclesInTransportMvit?: number;
+  numberOfOccupants?: number;
+  dayOfCrash?: number;
+  monthOfCrash?: number;
+  hourOfCrash?: number;
+  minuteOfCrash?: number;
+  firstHarmfulEvent?: number;
+  firstHarmfulEventName?: string;
+  mannerOfCollision?: number;
+  mannerOfCollisionName?: string;
+  unitType?: string;
+  hitAndRun?: string;
+  registrationState?: number;
+  registrationStateName?: string;
+  registeredVehicleOwner?: number;
+  registeredVehicleOwnerName?: string;
+  vehicleMake?: number;
+  vehicleMakeName?: string;
+  vehicleModel?: number;
+  makeModelCombined?: number;
+  bodyType?: number;
+  bodyTypeName?: string;
+  vehicleModelYear?: number;
+  vehicleIdentificationNumberVin?: string;
+  vehicleTrailing?: string;
+  mcidIssuingAuthority?: number;
+  mcidIssuingAuthorityName?: string;
+  mcidIdentificationNumber?: string;
+  motorCarrierIdentificationNumber?: string;
+  grossVehicleWeightRating?: number;
+  vehicleConfiguration?: number;
+  cargoBodyType?: number;
+  hazardousMaterialInvolvement?: string;
+  hazardousMaterialPlacard?: string;
+  hazardousMaterialIdentificationNumber?: number;
+  hazardousMaterialClassNumber?: number;
+  releaseOfHazardousMaterialFromTheCargoCompartment?: string;
+  busUse?: string;
+  specialUse?: number;
+  specialUseName?: string;
+  emergencyMotorVehicleUse?: string;
+  underrideOverride?: number;
+  underrideOverrideName?: string;
+  initialContactPoint?: number;
+  extentOfDamage?: string;
+  vehicleRemoval?: string;
+  mostHarmfulEvent?: number;
+  relatedFactorsVehicleLevel1?: number;
+  relatedFactorsVehicleLevel2?: number;
+  fireOccurrence?: string;
+  fatalitiesInVehicle?: number;
 }

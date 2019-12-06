@@ -4,62 +4,62 @@ const schemaDefinition = {
   vehicleNumber: { type: SchemaTypes.Number },
   personNumber: { type: SchemaTypes.Number },
   personType: { type: SchemaTypes.Number },
-  personTypeName: { type: SchemaTypes.Number },
+  personTypeName: { type: SchemaTypes.String },
   age: { type: SchemaTypes.Number },
-  sex: { type: SchemaTypes.Number },
-  markedCrosswalkPresent: { type: SchemaTypes.Number },
-  sidewalkPresent: { type: SchemaTypes.Number },
-  schoolZone: { type: SchemaTypes.Number },
+  sex: { type: SchemaTypes.String },
+  markedCrosswalkPresent: { type: SchemaTypes.String },
+  sidewalkPresent: { type: SchemaTypes.String },
+  schoolZone: { type: SchemaTypes.String },
   crashTypePedestrian: { type: SchemaTypes.Number },
-  crashTypePedestrianName: { type: SchemaTypes.Number },
+  crashTypePedestrianName: { type: SchemaTypes.String },
   crashTypeBicycle: { type: SchemaTypes.Number },
-  crashTypeBicycleName: { type: SchemaTypes.Number },
-  crashLocationPedestrian: { type: SchemaTypes.Number },
-  crashLocationBicycle: { type: SchemaTypes.Number },
-  pedestrianPosition: { type: SchemaTypes.Number },
-  bicyclistPosition: { type: SchemaTypes.Number },
-  pedestrianInitialDirectionOfTravel: { type: SchemaTypes.Number },
-  bicyclistInitialDirectionOfTravel: { type: SchemaTypes.Number },
-  motoristInitialDirectionOfTravel: { type: SchemaTypes.Number },
-  motoristManeuver: { type: SchemaTypes.Number },
-  intersectionLeg: { type: SchemaTypes.Number },
-  pedestrianScenario: { type: SchemaTypes.Number },
-  pedestrianScenarioName: { type: SchemaTypes.Number },
+  crashTypeBicycleName: { type: SchemaTypes.String },
+  crashLocationPedestrian: { type: SchemaTypes.String },
+  crashLocationBicycle: { type: SchemaTypes.String },
+  pedestrianPosition: { type: SchemaTypes.String },
+  bicyclistPosition: { type: SchemaTypes.String },
+  pedestrianInitialDirectionOfTravel: { type: SchemaTypes.String },
+  bicyclistInitialDirectionOfTravel: { type: SchemaTypes.String },
+  motoristInitialDirectionOfTravel: { type: SchemaTypes.String },
+  motoristManeuver: { type: SchemaTypes.String },
+  intersectionLeg: { type: SchemaTypes.String },
+  pedestrianScenario: { type: SchemaTypes.String },
+  pedestrianScenarioName: { type: SchemaTypes.String },
   crashGroupPedestrian: { type: SchemaTypes.Number },
-  crashGroupPedestrianName: { type: SchemaTypes.Number },
+  crashGroupPedestrianName: { type: SchemaTypes.String },
   crashGroupBicycle: { type: SchemaTypes.Number },
-  crashGroupBicycleName: { type: SchemaTypes.Number },
+  crashGroupBicycleName: { type: SchemaTypes.String },
 };
 
 export const pedestrianBicycleSchema = new Schema(schemaDefinition);
 
 export interface IPedestrianBicycle extends Types.Subdocument {
-  vehicleNumber: number;
-  personNumber: number;
-  personType: number;
-  personTypeName: number;
-  age: number;
-  sex: number;
-  markedCrosswalkPresent: number;
-  sidewalkPresent: number;
-  schoolZone: number;
-  crashTypePedestrian: number;
-  crashTypePedestrianName: number;
-  crashTypeBicycle: number;
-  crashTypeBicycleName: number;
-  crashLocationPedestrian: number;
-  crashLocationBicycle: number;
-  pedestrianPosition: number;
-  bicyclistPosition: number;
-  pedestrianInitialDirectionOfTravel: number;
-  bicyclistInitialDirectionOfTravel: number;
-  motoristInitialDirectionOfTravel: number;
-  motoristManeuver: number;
-  intersectionLeg: number;
-  pedestrianScenario: number;
-  pedestrianScenarioName: number;
-  crashGroupPedestrian: number;
-  crashGroupPedestrianName: number;
-  crashGroupBicycle: number;
-  crashGroupBicycleName: number;
+  vehicleNumber?: number;
+  personNumber?: number;
+  personType?: number;
+  personTypeName?: string;
+  age?: number;
+  sex?: string;
+  markedCrosswalkPresent?: string;
+  sidewalkPresent?: string;
+  schoolZone?: string;
+  crashTypePedestrian?: number;
+  crashTypePedestrianName?: string;
+  crashTypeBicycle?: number;
+  crashTypeBicycleName?: string;
+  crashLocationPedestrian?: string;
+  crashLocationBicycle?: string;
+  pedestrianPosition?: string;
+  bicyclistPosition?: string;
+  pedestrianInitialDirectionOfTravel?: string;
+  bicyclistInitialDirectionOfTravel?: string;
+  motoristInitialDirectionOfTravel?: string;
+  motoristManeuver?: string;
+  intersectionLeg?: string;
+  pedestrianScenario?: string;
+  pedestrianScenarioName?: string;
+  crashGroupPedestrian?: number;
+  crashGroupPedestrianName?: string;
+  crashGroupBicycle?: number;
+  crashGroupBicycleName?: string;
 }

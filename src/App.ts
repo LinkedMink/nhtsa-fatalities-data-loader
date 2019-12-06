@@ -1,12 +1,13 @@
-import { mapRawAccident } from "./AccidentMapper";
+import { mapRawIAccident } from "./AccidentMapper";
 import { connectSingletonDatabase } from "./Database";
 import { config, ConfigKey } from "./EnvironmentalConfig";
 import { getFileObjects } from "./FileHelpers";
 import { logger } from "./Logger";
 import { Accident, IAccident } from "./models/Accident";
+import { validateCoordinates } from "./models/Point";
 
 const main = async (): Promise<number> => {
-  connectSingletonDatabase();
+  await connectSingletonDatabase();
 
   logger.info("Load Accidents into memory");
 
@@ -26,6 +27,7 @@ const main = async (): Promise<number> => {
     "factor",
     "maneuver",
     "nmcrash",
+    "nmimpair",
     "nmprior",
     "parkwork",
     "pbtype",
@@ -61,45 +63,69 @@ const main = async (): Promise<number> => {
       .catch((error: any) => { throw error; });
   };
 
-  const maxDownloadPromises = config.getNumber(ConfigKey.MaxParallelDownlaods);
+  const maxFilePromises = config.getNumber(ConfigKey.MaxParallelFiles);
   const initialPromises = [];
-  while (initialPromises.length < maxDownloadPromises) {
+  while (initialPromises.length < maxFilePromises) {
     initialPromises.push(loadRelatedEntities());
   }
 
   await Promise.all(initialPromises)
     .catch((error: any) => { throw error; });
 
-  logger.info("Save entities to Database");
+  const totalToSave = accidentMap.size;
+  logger.info(`Save entities to Database: ${totalToSave}`);
 
-  const maxBatchSize = config.getNumber(ConfigKey.MaxParallelDownlaods);
+  let writtenRecords = 0;
+  let processedRecords = 0;
+  const maxBatchSize = config.getNumber(ConfigKey.MongoDbBatchSize);
   const iterator = accidentMap.entries();
   let nextAccident = iterator.next();
 
-  const saveBatch = () => {
+  const saveBatch = async () => {
     const batch: IAccident[] = [];
-    while (nextAccident && batch.length < maxBatchSize) {
+    while (nextAccident.value && batch.length < maxBatchSize) {
       const [id, accident] = nextAccident.value;
-      batch.push(mapRawAccident(accident));
-      accidentMap.delete(id);
+      const accidentModel = mapRawIAccident(accident);
+
+      if (accidentModel.location) {
+        const point = accidentModel.location.coordinates;
+        if (!validateCoordinates(point)) {
+          accidentModel.location = undefined;
+          logger.warn(`Invalid Coordinates: id=${accidentModel.consecutiveNumber}, ${point}`);
+        }
+      }
+
+      batch.push(accidentModel);
       nextAccident = iterator.next();
+      accidentMap.delete(id);
     }
 
-    Accident.create(batch, (error) => {
-      if (error) {
-        let message = error.message;
-        if (error.errors) {
-          message = error.errors;
+    await Accident.collection.insertMany(batch)
+      .then((result) => {
+        processedRecords += batch.length;
+        writtenRecords += result.insertedCount;
+      })
+      .catch((error) => {
+        if (error) {
+          const message = `${error.code} : ${error.errmsg} : ${error.name}\n${error.stack}`;
+          logger.error(message);
         }
-
-        logger.error(message);
-      }
-    });
+      });
   };
 
-  while (nextAccident) {
-    saveBatch();
+  let batchesToReport = 0;
+  while (nextAccident.value) {
+    await saveBatch();
+    batchesToReport++;
+
+    if (batchesToReport >= 10 || !nextAccident.value) {
+      const percentComplete = (processedRecords / totalToSave * 100);
+      logger.info(`Saved: ${percentComplete.toFixed(2)}%`);
+      batchesToReport = 0;
+    }
   }
+
+  logger.info(`Complete Saved: ${writtenRecords} / ${totalToSave}`);
 
   return 0;
 };
@@ -109,6 +135,16 @@ main()
     process.exit(code);
   })
   .catch((error) => {
-    logger.error(error);
+    if (!error) {
+      logger.crit("Unhandled Error: Unspecified");
+      process.exit(1);
+    }
+
+    let message = error.message;
+    if (error.stack) {
+      message = error.stack;
+    }
+
+    logger.crit(message);
     process.exit(1);
   });

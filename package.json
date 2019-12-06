@@ -1,6 +1,6 @@
 {
   "name": "nhtsa-fatalities-data-loader",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Extract data from NHTSA Traffic Fatalities and load into MongoDB",
   "license": "MIT",
   "author": {
@@ -15,7 +15,7 @@
   "scripts": {
     "start": "npm run build && npm run startApp",
     "build": "tsc",
-    "startApp": "node -r dotenv/config ./build/src/app.js",
+    "startApp": "node --max-old-space-size=4096 -r dotenv/config ./build/App.js",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {

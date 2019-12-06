@@ -17,7 +17,6 @@ const accidentSchema = new Schema({
   consecutiveNumber: {
     type: SchemaTypes.Number,
     index: true,
-    unique: true,
   },
   stateNumber: { type: SchemaTypes.Number },
   stateName: { type: SchemaTypes.String },
@@ -54,6 +53,7 @@ const accidentSchema = new Schema({
   */
   location: {
     type: pointSchema,
+    index: { type: "2dsphere" },
   },
   specialJurisdiction: { type: SchemaTypes.Number },
   specialJurisdictionName: { type: SchemaTypes.String },
@@ -110,80 +110,84 @@ const accidentSchema = new Schema({
   vehicleEvents: [vehicleEventSchema],
 });
 
+accidentSchema.index(
+  { consecutiveNumber: 1, yearOfCrash: 1},
+  { unique: true });
+
 export interface IAccident extends Document {
-  consecutiveNumber: number;
-  stateNumber: number;
-  stateName: string;
-  numberOfVehicleFormsSubmittedAll: number;
-  numberOfMotorVehiclesInTransportMvit: number;
-  numberOfParkedWorkingVehicles: number;
-  numberOfFormsSubmittedForPersonsNotInMotorVehicles: number;
-  numberOfPersonsNotInMotorVehiclesInTransportMvit: number;
-  numberOfPersonsInMotorVehiclesInTransportMvit: number;
-  numberOfFormsSubmittedForPersonsInMotorVehicles: number;
-  county: number;
-  city: number;
-  dayOfCrash: number;
-  monthOfCrash: number;
-  yearOfCrash: number;
-  dayOfWeek: number;
-  hourOfCrash: number;
-  minuteOfCrash: number;
-  nationalHighwaySystem: number;
-  landUse: number;
-  landUseName: string;
-  functionalSystem: number;
-  functionalSystemName: string;
-  ownership: number;
-  ownershipName: string;
-  routeSigning: number;
-  routeSigningName: string;
-  trafficwayIdentifier: string;
-  trafficwayIdentifier2: string;
-  milepoint: number;
+  consecutiveNumber?: number;
+  stateNumber?: number;
+  stateName?: string;
+  numberOfVehicleFormsSubmittedAll?: number;
+  numberOfMotorVehiclesInTransportMvit?: number;
+  numberOfParkedWorkingVehicles?: number;
+  numberOfFormsSubmittedForPersonsNotInMotorVehicles?: number;
+  numberOfPersonsNotInMotorVehiclesInTransportMvit?: number;
+  numberOfPersonsInMotorVehiclesInTransportMvit?: number;
+  numberOfFormsSubmittedForPersonsInMotorVehicles?: number;
+  county?: number;
+  city?: number;
+  dayOfCrash?: number;
+  monthOfCrash?: number;
+  yearOfCrash?: number;
+  dayOfWeek?: number;
+  hourOfCrash?: number;
+  minuteOfCrash?: number;
+  nationalHighwaySystem?: number;
+  landUse?: number;
+  landUseName?: string;
+  functionalSystem?: number;
+  functionalSystemName?: string;
+  ownership?: number;
+  ownershipName?: string;
+  routeSigning?: number;
+  routeSigningName?: string;
+  trafficwayIdentifier?: string;
+  trafficwayIdentifier2?: string;
+  milepoint?: number;
   /*
-  latitude: number;
-  longitude: number;
+  latitude?: number;
+  longitude?: number;
   */
-  location: IPoint;
-  specialJurisdiction: number;
-  specialJurisdictionName: string;
-  firstHarmfulEvent: number;
-  firstHarmfulEventName: string;
-  mannerOfCollision: number;
-  mannerOfCollisionName: string;
-  relationToJunctionWithinInterchangeArea: string;
-  relationToJunctionSpecificLocation: number;
-  relationToJunctionSpecificLocationName: string;
-  typeOfIntersection: string;
-  workZone: string;
-  relationToTrafficway: number;
-  relationToTrafficwayName: string;
-  lightCondition: number;
-  lightConditionName: string;
-  atmosphericConditions1: number;
-  atmosphericConditions1Name: string;
-  atmosphericConditions2: number;
-  atmosphericConditions2Name: string;
-  atmosphericConditions: number;
-  atmosphericConditionsName: string;
-  schoolBusRelated: string;
-  railGradeCrossingIdentifier: string;
-  hourOfNotification: number;
-  minuteOfNotification: number;
-  hourOfArrivalAtScene: number;
-  minuteOfArrivalAtScene: number;
-  hourOfEmsArrivalAtHospital: number;
-  minuteOfEmsArrivalAtHospital: number;
-  relatedFactorsCrashLevel1: number;
-  relatedFactorsCrashLevel1Name: string;
-  relatedFactorsCrashLevel2: number;
-  relatedFactorsCrashLevel2Name: string;
-  relatedFactorsCrashLevel3: number;
-  relatedFactorsCrashLevel3Name: string;
-  numberOfFatalities: number;
-  numberOfDrunkDrivers: number;
-  timestampOfCrash: Date;
+  location?: IPoint;
+  specialJurisdiction?: number;
+  specialJurisdictionName?: string;
+  firstHarmfulEvent?: number;
+  firstHarmfulEventName?: string;
+  mannerOfCollision?: number;
+  mannerOfCollisionName?: string;
+  relationToJunctionWithinInterchangeArea?: string;
+  relationToJunctionSpecificLocation?: number;
+  relationToJunctionSpecificLocationName?: string;
+  typeOfIntersection?: string;
+  workZone?: string;
+  relationToTrafficway?: number;
+  relationToTrafficwayName?: string;
+  lightCondition?: number;
+  lightConditionName?: string;
+  atmosphericConditions1?: number;
+  atmosphericConditions1Name?: string;
+  atmosphericConditions2?: number;
+  atmosphericConditions2Name?: string;
+  atmosphericConditions?: number;
+  atmosphericConditionsName?: string;
+  schoolBusRelated?: string;
+  railGradeCrossingIdentifier?: string;
+  hourOfNotification?: number;
+  minuteOfNotification?: number;
+  hourOfArrivalAtScene?: number;
+  minuteOfArrivalAtScene?: number;
+  hourOfEmsArrivalAtHospital?: number;
+  minuteOfEmsArrivalAtHospital?: number;
+  relatedFactorsCrashLevel1?: number;
+  relatedFactorsCrashLevel1Name?: string;
+  relatedFactorsCrashLevel2?: number;
+  relatedFactorsCrashLevel2Name?: string;
+  relatedFactorsCrashLevel3?: number;
+  relatedFactorsCrashLevel3Name?: string;
+  numberOfFatalities?: number;
+  numberOfDrunkDrivers?: number;
+  timestampOfCrash?: Date;
 
   crashEvents: Types.Array<ICrashEvent>;
   nonMotoristsCrash: Types.Array<INonMotoristCrash>;
