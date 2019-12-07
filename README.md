@@ -23,13 +23,13 @@ npm install
 ### Export Tables
 Find the database from the BigQuery public datasets:
 
-> bigquery-public-data:nhtsa_traffic_fatalities
+bigquery-public-data:nhtsa_traffic_fatalities
 
 For each table, export the table as JSON (and probably GZIP compress):
 
-> Select Table -> EXPORT -> Export to GCS
-> Export format: JSON (Newline delimited)
-> File Name: [Table Name].json (accident_2015.json)
+* Select Table -> EXPORT -> Export to GCS
+* Export format: JSON (Newline delimited)
+* File Name: [Table Name].json (example: accident_2015.json)
 
 When you've downloaded all the files, create a `data` directory in the root of
 the project.
