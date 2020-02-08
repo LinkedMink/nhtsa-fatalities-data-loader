@@ -35,10 +35,10 @@ if (process.env.NODE_ENV === Environment.Test) {
 
 export class EnvironmentalConfig {
   private fileBuffers: Map<ConfigKey, Buffer> = new Map();
-  private jsonObjects: Map<ConfigKey, { [key: string]: any; }> = new Map();
+  private jsonObjects: Map<ConfigKey, { [key: string]: any }> = new Map();
   private isEnvironmentLocalValue: boolean =
     !process.env.NODE_ENV || process.env.NODE_ENV === Environment.Local;
-  private packageJsonValue: { [key: string]: any; };
+  private packageJsonValue: { [key: string]: any };
 
   constructor() {
       // const filePath = isEnvironmentLocal ? "../package.json" : "./package.json";
@@ -51,7 +51,7 @@ export class EnvironmentalConfig {
     return this.isEnvironmentLocalValue;
   }
 
-  public get packageJson(): { [key: string]: any; } {
+  public get packageJson(): { [key: string]: any } {
     return this.packageJsonValue;
   }
 
@@ -76,7 +76,7 @@ export class EnvironmentalConfig {
     }
 
     const value = this.getConfigValue(key).trim();
-    if (value.length > 0 && (value[0] === "{" || value[0] === "[")) {
+    if (value.length > 0 && (value.startsWith("{") || value.startsWith("["))) {
       return this.getJson(key);
     }
 
@@ -90,7 +90,7 @@ export class EnvironmentalConfig {
     }
 
     const value = this.getConfigValue(key);
-    const parsed = JSON.parse(value) as { [key: string]: any; };
+    const parsed = JSON.parse(value) as { [key: string]: any };
     this.jsonObjects.set(key, parsed);
     return parsed;
   }

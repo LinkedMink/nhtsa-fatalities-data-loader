@@ -289,6 +289,36 @@ const mapRawIPerson = (raw: any): IPerson => {
   } as IPerson;
 };
 
+const mapRawIVehicleEvent = (raw: any): IVehicleEvent => {
+  return {
+    eventNumber: raw.event_number,
+    vehicleNumber: raw.vehicle_number,
+    vehicleEventNumber: raw.vehicle_event_number,
+    vehicleNumberThisVehicle: raw.vehicle_number_this_vehicle,
+    areaOfImpactThisVehicle: raw.area_of_impact_this_vehicle,
+    areaOfImpactThisVehicleName: raw.area_of_impact_this_vehicle_name,
+    sequenceOfEvents: raw.sequence_of_events,
+    sequenceOfEventsName: raw.sequence_of_events_name,
+    vehicleNumberOtherVehicle: raw.vehicle_number_other_vehicle,
+    areaOfImpactOtherVehicle: raw.area_of_impact_other_vehicle,
+    areaOfImpactOtherVehicleName: raw.area_of_impact_other_vehicle_name,
+  } as IVehicleEvent;
+};
+
+const mapRawIViolation = (raw: any): IViolation => {
+  return {
+    violationsCharged: raw.violations_charged,
+    violationsChargedName: raw.violations_charged_name,
+  } as IViolation;
+};
+
+const mapRawIVisionObstruction = (raw: any): IVisionObstruction => {
+  return {
+    driversVisionObscuredBy: raw.drivers_vision_obscured_by,
+    driversVisionObscuredByName: raw.drivers_vision_obscured_by_name,
+  } as IVisionObstruction;
+};
+
 const mapRawIVehicleCrash = (raw: any, rawAccident: any): IVehicleCrash => {
   const vehicleCrash = {
     vehicleNumber: raw.vehicle_number,
@@ -558,36 +588,6 @@ const mapRawIVehicleDetail = (raw: any): IVehicleDetail => {
     motorcyclesBodyStyleCode: raw.motorcycles_body_style_code,
     motorcyclesBodyStyle: raw.motorcycles_body_style,
   } as IVehicleDetail;
-};
-
-const mapRawIVehicleEvent = (raw: any): IVehicleEvent => {
-  return {
-    eventNumber: raw.event_number,
-    vehicleNumber: raw.vehicle_number,
-    vehicleEventNumber: raw.vehicle_event_number,
-    vehicleNumberThisVehicle: raw.vehicle_number_this_vehicle,
-    areaOfImpactThisVehicle: raw.area_of_impact_this_vehicle,
-    areaOfImpactThisVehicleName: raw.area_of_impact_this_vehicle_name,
-    sequenceOfEvents: raw.sequence_of_events,
-    sequenceOfEventsName: raw.sequence_of_events_name,
-    vehicleNumberOtherVehicle: raw.vehicle_number_other_vehicle,
-    areaOfImpactOtherVehicle: raw.area_of_impact_other_vehicle,
-    areaOfImpactOtherVehicleName: raw.area_of_impact_other_vehicle_name,
-  } as IVehicleEvent;
-};
-
-const mapRawIViolation = (raw: any): IViolation => {
-  return {
-    violationsCharged: raw.violations_charged,
-    violationsChargedName: raw.violations_charged_name,
-  } as IViolation;
-};
-
-const mapRawIVisionObstruction = (raw: any): IVisionObstruction => {
-  return {
-    driversVisionObscuredBy: raw.drivers_vision_obscured_by,
-    driversVisionObscuredByName: raw.drivers_vision_obscured_by_name,
-  } as IVisionObstruction;
 };
 
 export const mapRawIAccident = (rawAccident: any): IAccident => {
